@@ -1,0 +1,10 @@
+.logo{
+    font-size: 36px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.header {
+    border-bottom: 1px solid #aaa;
+    align-items: center;
+}
