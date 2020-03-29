@@ -7,7 +7,7 @@ class Map extends Component {
     constructor(props){
         super(props);
         this.state = {
-            apiKey : '',
+            apiKey : 'AIzaSyDMmnhSuCd_f1MpYkwIrvqMZcFa2z_oHjc',
             center : {
                 lng : -43.2506787,
                 lat : -22.811961
@@ -16,20 +16,22 @@ class Map extends Component {
         }
     }
     render(){
+        let selected = this.props.selectedRestaurant;
         const markers = this.props.restaurants.map(restaurant => {
             return (
                 <RestaurantDot 
                     key={restaurant.name} 
                     lat={restaurant.lat} 
                     lng={restaurant.lng} 
-                    performance={restaurant.performance}
+                    restaurant={restaurant}
+                    selected={selected && restaurant.name === selected.name}
                 >
                 </RestaurantDot>
             )
         })
         return (
             <GoogleMapReact
-                bootstrapURLKeys={{ key : 'AIzaSyDMmnhSuCd_f1MpYkwIrvqMZcFa2z_oHjc' }}
+                bootstrapURLKeys={{ key : '' }}
                 defaultCenter={this.state.center}
                 defaultZoom={this.state.zoom}
             >

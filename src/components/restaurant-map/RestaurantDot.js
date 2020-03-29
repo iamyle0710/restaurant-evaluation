@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import {selectRestaurant} from '../../actions';
 import './RestaurantDot.css';
 
 class RestaurantDot extends Component {
@@ -14,13 +17,15 @@ class RestaurantDot extends Component {
     
 
     render(){
-        const performanceStyle = this.performanceStyle[this.props.performance.toLowerCase()];
+        const restaurant = this.props.restaurant;
+        const performanceStyle = this.performanceStyle[restaurant.performance.toLowerCase()];
+        const selected = this.props.selected ? "selected" : "";
         return (
-            <div className={"restaurantDot " + performanceStyle}>
-                {this.props.performance}
+            <div className={["restaurantDot", performanceStyle, selected].join(" ")} onClick={() => this.props.selectRestaurant(restaurant)}>
+                {restaurant.performance}
             </div>
         )
     }
 }
 
-export default RestaurantDot;
+export default connect(null, { selectRestaurant })(RestaurantDot);

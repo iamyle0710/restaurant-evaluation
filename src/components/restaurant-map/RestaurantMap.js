@@ -14,11 +14,13 @@ class RestuarantMap extends Component {
     this.props.getRestaurantsRating();
   }
   render() {
-    let restaurants = this.props.restaurant_ratings || [];
+    let restaurants = this.props.restaurantRatings || [];
 
     return (
       <div style={{ height: "100%", width: "100%" }}>
-        <Map restaurants={restaurants}></Map>
+        <Map 
+          restaurants={restaurants} 
+          selectedRestaurant={this.props.selectedRestaurant || null}></Map>
       </div>
     );
   }
@@ -26,7 +28,10 @@ class RestuarantMap extends Component {
 
 const mapStateToProps = (state) => {
   console.log(state);
-  return { restaurant_ratings : state.restaurant_ratings };
+  return { 
+    restaurantRatings : state.restaurantRatings,
+    selectedRestaurant : state.selectedRestaurant
+  };
 }
 
 export default connect(mapStateToProps, {getRestaurantsRating})(RestuarantMap);

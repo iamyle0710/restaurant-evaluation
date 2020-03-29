@@ -17,6 +17,7 @@ export const getRestaurantsRating = () => {
         const response = await axios.get("./assets/restaurant_rating.json");
         const rst = response.data.map( restaurant => {
             restaurant["monthly_footprint"] = +restaurant["monthly_footprint"];
+            restaurant["number_of_ratings"] = +restaurant["number_of_ratings"];
             restaurant["terminal"] = +restaurant["terminal"];
             restaurant["level"] = +restaurant["level"];
             restaurant["lat"] = +restaurant["lat"];
@@ -29,4 +30,11 @@ export const getRestaurantsRating = () => {
             payload : rst
         });
     }
-}
+};
+
+export const selectRestaurant = (restaurant) => {
+    return {
+        type : "SELECTED_RESTAURANT",
+        payload : restaurant
+    }
+};

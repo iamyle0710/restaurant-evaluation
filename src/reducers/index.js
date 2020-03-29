@@ -10,6 +10,16 @@ const restaurantsRatingsReducer = (restaurants = [], action) => {
     }
 }
 
+const selectedRestaurantReducer = (restaurant = null, action) => {
+    switch(action.type){
+        case "SELECTED_RESTAURANT":
+            return {...action.payload};
+        default:
+            return restaurant;
+    }
+}
+
 export default combineReducers({
-    restaurant_ratings : restaurantsRatingsReducer
+    restaurantRatings : restaurantsRatingsReducer,
+    selectedRestaurant : selectedRestaurantReducer
 });
