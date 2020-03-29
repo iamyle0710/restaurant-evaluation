@@ -6,6 +6,9 @@ import HeaderRow from './header/HeaderRow';
 import RestuarantMap from './restaurant-map/RestaurantMap';
 import RestaurantEvaluation from './restaurant-evaluation/RestaurantEvaluation';
 
+const API_KEY =`${process.env.GOOGLE_MAP_API}`;
+console.log("API", API_KEY);
+
 const App = () => {
     return (
         <Container fluid className="d-flex h-100 flex-column">
@@ -18,7 +21,7 @@ const App = () => {
                 <Col sm={8}>
                     <RestuarantMap></RestuarantMap>
                 </Col>
-                <Col sm={4}>
+                <Col sm={4} className="ml-0 pl-0">
                     <RestaurantEvaluation></RestaurantEvaluation>
                 </Col>
             </Row>
