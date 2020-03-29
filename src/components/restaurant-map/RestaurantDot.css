@@ -1,0 +1,25 @@
+.restaurantDot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #aaa;
+    opacity: 0.8;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.restaurantDot.bad{
+    background-color: #ff2f2f;
+    color: #fff;
+}
+
+.restaurantDot.median{
+    background-color: #ff9393;
+    color: #414141;
+}
+
+.restaurantDot.good{
+    background-color: #d7f243;
+    color: #414141;
+}
