@@ -1,0 +1,65 @@
+.restaurantDot{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+    opacity: 0.9;
+    width: 30px;
+    height: 30px;
+    left : -15px;
+    top : -30px;
+    border-radius: 100%;
+}
+.restaurantDot.bad{
+    background-color: #ff2f2f;
+    color: #fff;
+}
+
+.restaurantDot.median{
+    background-color: #ff9393;
+    color: #414141;
+}
+
+.restaurantDot.good{
+    background-color: #d7f243;
+    color: #414141;
+}
+.restaurantDot:hover,
+.restaurantDot.selected {
+    border: 2px solid #7c7cfa;
+    /* background: #004b9c; */
+    color: #fff;
+    z-index: 1000;
+}
+
+.hoverInfo {
+    position: absolute;
+    background: #007bfe;
+    color: #fff;
+    min-width: 100px;
+    padding: 10px;
+    text-align: center;
+    top: -45px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px 1px #3b3b3b;
+    transition: opacity 0.5s;
+    display: none;
+}
+
+.arrowDown{
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    margin-left: -10px;
+    width : 0;
+    height : 0;
+    border-left : 10px solid transparent;
+    border-right : 10px solid transparent;
+    border-top : 15px solid #007bfe;
+}
+
+.restaurantDot:hover .hoverInfo,
+.restaurantDot.selected .hoverInfo{
+    display: block;
+}
