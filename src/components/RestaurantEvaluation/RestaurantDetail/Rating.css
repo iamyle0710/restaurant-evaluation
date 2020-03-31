@@ -1,0 +1,29 @@
+.rating{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    border-left: 1px solid #aaa;
+    padding-left: 10px;
+}
+
+.ratingWidget{
+    display: flex;
+    justify-content: center;
+}
+
+.ratingStar{
+    font-size: 26px;
+    color : #d1d1d1;
+    margin: 0px 3px;
+}
+
+.ratingStar.checked{
+    color : #d9d926;
+}
+
+.ratingQuantity{
+    color: #818181;
+    display: flex;
+    align-items: center;
+    font-style: italic;
+}

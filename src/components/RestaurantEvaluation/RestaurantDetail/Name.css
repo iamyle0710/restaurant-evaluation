@@ -1,0 +1,7 @@
+.name {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    margin: 10px 0 0 0;
+    color: #4d4d4d;
+}
