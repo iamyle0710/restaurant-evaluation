@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col} from 'react-bootstrap';
+import {Col, DropdownButton, Dropdown} from 'react-bootstrap';
 
 import './HeaderRow.css';
 
@@ -8,7 +8,12 @@ const HeaderRow = () => {
         <div className="header d-flex flex-row">
             <Col sm="auto" className='logo'>Signal</Col>
             <Col className="flex-grow-1">Restaurant Evaluation</Col>
-            <Col sm="auto">Stakeholders</Col>
+            <Col sm="auto" className="pr-0">
+                <DropdownButton id="dropdown-basic-button" title="Stakeholders">
+                    <Dropdown.Item href="#/action-1">Stakeholders</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Travelers</Dropdown.Item>
+                </DropdownButton>
+            </Col>
         </div>
     )
 }
