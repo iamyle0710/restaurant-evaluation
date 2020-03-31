@@ -1,0 +1,30 @@
+.percentageContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.percentage{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 1px solid #cbc9f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.indicator{
+    position: absolute;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background: linear-gradient(to top,#e0e0f8, #d0d0fc);
+    transition: height 0.5s;
+    z-index: -1;
+}
