@@ -15,9 +15,8 @@ class Rating extends Component {
     }
 
     render(){
-        console.log(this.props);
         return (
-            <div className="d-flex flex-row">
+            <div className="d-flex flex-row" style={{flexWrap: "wrap", margin: "10px 0"}}>
                 <div className="ratingWidget">
                     {this.renderStars()}
                 </div>

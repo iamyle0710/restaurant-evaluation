@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Col,Badge } from 'react-bootstrap';
+import React from 'react';
 
 import './Name.css';
 
