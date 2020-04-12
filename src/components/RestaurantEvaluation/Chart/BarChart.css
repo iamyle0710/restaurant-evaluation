@@ -18,3 +18,23 @@ svg{
     fill: #9d9d9d;
     font-size: 10px;
 }
+
+.nodata{
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: #ddd;
+    border-radius: 3px;
+    color: #818181;
+    font-size: 18px;
+}
+
+.nodata .messageIcon{
+    font-size: 40px;
+    margin: 5px;
+}
+
+.nodata .message{
+    font-size: 16px;
+    color: #898989;
+}
