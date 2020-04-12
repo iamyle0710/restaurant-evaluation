@@ -1,15 +1,15 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   select,
   axisLeft,
   axisBottom,
+  format,
   scaleBand,
   scaleLinear,
   schemeCategory10,
   pie,
   arc,
-  scaleOrdinal,
-  interpolateLab
+  scaleOrdinal
 } from "d3";
 
 /**
@@ -26,7 +26,12 @@ export const useWindowResize = ref => {
   const [dimension, setDimension] = useState({ width: 300, height: 200 });
 
   useEffect(() => {
+    if (!ref || !ref.current) {
+      return;
+    }
+
     function handleResize(e) {
+      console.log(ref, ref.current);
       setDimension({
         width: ref.current.width.baseVal.value,
         height: ref.current.height.baseVal.value
@@ -79,14 +84,14 @@ export const useBarChartRender = (
       width: svgDimension.width - margins.left - margins.right,
       height: svgDimension.height - margins.top - margins.bottom
     };
-
+    const maxValue = Math.max(...data.map(d => d.value));
     const xScale = scaleBand()
       .domain(data.map(d => d.day))
       .range([0, chartDimension.width])
       .padding(0.2);
 
     const yScale = scaleLinear()
-      .domain([0, Math.max(...data.map(d => d.value))])
+      .domain([0, maxValue <= 10 ? 10 : maxValue])
       .range([chartDimension.height, 0]);
 
     const colorScale = scaleLinear()
@@ -94,7 +99,7 @@ export const useBarChartRender = (
       .range(["#a7a7f4", "#6161f4"]);
 
     const xAxis = axisBottom(xScale);
-    const yAxis = axisLeft(yScale);
+    const yAxis = axisLeft(yScale).ticks(5).tickFormat(format("d"));
     const svg = select(svgRef.current);
 
     svg
@@ -157,7 +162,6 @@ export const useBarChartRender = (
  *
  */
 export const usePieChartRender = (svgRef, svgDimension, data) => {
-
   useEffect(() => {
     if (
       svgDimension.width !== svgRef.current.width.baseVal.value ||
@@ -170,8 +174,8 @@ export const usePieChartRender = (svgRef, svgDimension, data) => {
     }
     const { width, height } = svgDimension;
     const createPie = pie()
-        .value(d => d.value)
-        .sort(null);
+      .value(d => d.value)
+      .sort(null);
     const createArc = arc()
       .innerRadius(0)
       .outerRadius(Math.min(width, height) / 2 - 1);
@@ -181,22 +185,23 @@ export const usePieChartRender = (svgRef, svgDimension, data) => {
     console.log(chartData);
     const svg = select(svgRef.current);
 
-    svg.attr("viewBox", [-width / 2, -height/2, width, height]);
+    svg.attr("viewBox", [-width / 2, -height / 2, width, height]);
 
-    svg.select("g.chart")
-        .attr("stroke", "white")
-        .selectAll("path")
-        .data(chartData)
-        .join(
-            enter => enter.append("g")
-                .attr("class", "arc")
-                .append("path")
-                .attr("d", createArc)
-                .attr("fill", (d,i) => colors(i)),
-            update => update.attr("d", createArc),
-            exit => exit.remove()
-
-        )
-
+    svg
+      .select("g.chart")
+      .attr("stroke", "white")
+      .selectAll("path")
+      .data(chartData)
+      .join(
+        enter =>
+          enter
+            .append("g")
+            .attr("class", "arc")
+            .append("path")
+            .attr("d", createArc)
+            .attr("fill", (d, i) => colors(i)),
+        update => update.attr("d", createArc),
+        exit => exit.remove()
+      );
   }, [data, svgDimension]);
 };
