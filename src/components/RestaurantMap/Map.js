@@ -33,6 +33,13 @@ class Map extends Component {
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={this.state.center}
         defaultZoom={this.state.zoom}
+        yesIWantToUseGoogleMapApiInternals={true}
+        onGoogleApiLoaded={({map, maps}) => {
+          map.setOptions({
+            clickableIcons : false
+          })
+          console.log("loaded ", map, maps)
+        }}
       >
         {markers}
       </GoogleMapReact>
