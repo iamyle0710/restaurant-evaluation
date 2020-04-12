@@ -1,0 +1,70 @@
+.SuggestionItem {
+    flex: 1 0 0%;
+    min-width: 250px;
+    width: 250px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.SuggestionItem img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.SuggestionItem .itemName{
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(0, 0, 0) 0px 0px 20px;
+    font-weight: bold;
+    width: 100%;
+    padding: 5px;
+    padding: 10px 15px;
+    justify-content: center;
+}
+
+.SuggestionItem .hoverContent{
+    width: 100%;
+    top: calc(100% - 35px);
+    position: absolute;
+    height: 100%;
+    transition: top 0.3s;
+}
+
+.SuggestionItem:hover .hoverContent{
+    top: 0;
+}
+
+.SuggestionItem .hoverContent .mask{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #0000008a;
+    position: relative;
+    flex-direction: column;
+}
+
+.SuggestionItem:hover .hoverContent{
+    opacity: 1;
+}
+
+.SuggestionItem:hover .hoverContent .itemRow{
+    color: #fff;
+    z-index: 1;
+}
+
+.SuggestionItem:hover .hoverContent .itemRow .performance{
+    border: 1px solid #bababa;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

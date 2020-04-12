@@ -1,0 +1,18 @@
+#SuggestList .suggest_filter_btn button{
+    background: #fff;
+    color: #007bfe;
+    border: 1px solid #007bfe;
+    border-radius: 50px;
+    margin: 0 10px 10px 0;
+}
+
+#SuggestList .dropdown-menu{
+    max-height: 200px;
+    overflow: auto;
+}
+
+#SuggestList .badge{
+    color: #fff;
+    background: #007bfec7;
+    margin: 5px 10px;
+}
