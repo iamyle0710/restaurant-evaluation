@@ -10,6 +10,15 @@ const restaurantsRatingsReducer = (restaurants = [], action) => {
     }
 }
 
+const restaurantWordsReducer = ( restaurants = {}, action) => {
+    switch(action.type){
+        case "GET_RESTAURANT_WORDS":
+            return action.payload;
+        default:
+            return restaurants;
+    }
+}
+
 const selectedRestaurantReducer = (restaurant = null, action) => {
     switch(action.type){
         case "SELECTED_RESTAURANT":
@@ -19,7 +28,18 @@ const selectedRestaurantReducer = (restaurant = null, action) => {
     }
 }
 
+const suggestionsReducer = (restaurants = [], action) => {
+    switch(action.type){
+        case "GET_RESTAURANT_SUGGESTIONS":
+            return [...action.payload];
+        default:
+            return restaurants;
+    }
+}
+
 export default combineReducers({
     restaurantRatings : restaurantsRatingsReducer,
-    selectedRestaurant : selectedRestaurantReducer
+    restaurantWords : restaurantWordsReducer,
+    selectedRestaurant : selectedRestaurantReducer,
+    suggestions : suggestionsReducer
 });

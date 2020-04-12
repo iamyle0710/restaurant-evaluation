@@ -29,7 +29,14 @@ export const getRestaurantsRating = () => {
                     day : indexToDay[index],
                     value : +value
                 }
-            })
+            });
+            restaurant["footprint_percentage"] = [{
+                name : "current restaurant",
+                value : restaurant["monthly_footprint"]
+            }, {
+                name : "other restaurants",
+                value : restaurant["total_monthly_footprint"] - restaurant["monthly_footprint"]
+            }]
             return restaurant;
         })
 
@@ -39,6 +46,36 @@ export const getRestaurantsRating = () => {
         });
     }
 };
+
+export const getRestaurantWords = () => {
+    return async (dispatch) => {
+        const response = await axios.get("/assets/restaurant_tfidf.json");
+        const rst = response.data;
+        // console.log(rst);
+        dispatch({
+            type : "GET_RESTAURANT_WORDS",
+            payload : rst
+        })
+    }
+}
+
+export const getSuggestions = () => {
+    return async (dispatch) => {
+        const response = await axios.get("/assets/brazil_restaurant_rating.json");
+        const rst = response.data.map(restaurant => {
+            restaurant["number_of_reviews"] = +restaurant["number_of_reviews"];
+            restaurant["ratings"] = +restaurant["ratings"];
+            restaurant["lat"] = +restaurant["lat"];
+            restaurant["lng"] = +restaurant["lng"];
+            return restaurant;
+        });
+        // console.log(rst);
+        dispatch({
+            type : "GET_RESTAURANT_SUGGESTIONS",
+            payload : rst
+        })
+    }
+}
 
 export const selectRestaurant = (restaurant) => {
     return {
