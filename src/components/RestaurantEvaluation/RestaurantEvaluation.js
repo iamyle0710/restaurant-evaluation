@@ -4,10 +4,10 @@ import { Container, Col, Row } from 'react-bootstrap';
 import './RestaurantEvaluation.css';
 import Name from './RestaurantDetail/Name';
 import Rating from './RestaurantDetail/Rating';
-import Barchart from './Chart/BarChart';
 import Footprint from './Chart/Footprint';
 import WordCloud from './Chart/WordCloud';
 import SuggestList from './Suggestions/SuggestList';
+import WeekdayTraffic from "./WeekdayTraffic/WeekdayTraffic";
 
 class RestaurantEvaluation extends Component {
 
@@ -46,9 +46,9 @@ class RestaurantEvaluation extends Component {
                         <WordCloud words={this.props.words}></WordCloud>
                     </Col>
                 </Row>
-                <Row style={{borderBottom: "1px solid #ddd", paddingBottom: "20px"}}>
+                <Row className="pt-3" style={{borderBottom: "1px solid #ddd", paddingBottom: "20px"}}>
                     <Col sm={4}>
-                        <Row className="mt-3">
+                        <Row>
                             <Col sm={12}>
                                 <span className="cellName mb-2">Footprint(%)</span>
                                 <div style={{height: "200px"}}>
@@ -57,15 +57,8 @@ class RestaurantEvaluation extends Component {
                             </Col>
                         </Row>
                     </Col>
-                    <Col sm={8}>
-                        <Row className="mt-3">
-                            <Col sm={12}>
-                                <span className="cellName">Weekday Traffic</span>
-                                <div style={{height: "200px"}}>
-                                    <Barchart data={restaurant.daily_footprints} xLabel="Day" yLabel="Customers"></Barchart>
-                                </div>
-                            </Col>
-                        </Row>
+                    <Col sm={8} className='weekdayTraffic'> 
+                        <WeekdayTraffic data={restaurant.daily_footprints}></WeekdayTraffic>
                     </Col>
                 </Row>
                 <Row style={{borderBottom: "1px solid #ddd", paddingBottom: "20px", overflow:"auto", minHeight:"400px"}}>

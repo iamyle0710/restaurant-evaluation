@@ -1,0 +1,18 @@
+.weekdayTraffic .titleRow{
+    justify-content: space-between;
+    margin: 0 0 10px;
+}
+
+.weekdayTraffic .sortBtn{
+    color: #aaaaaa;
+    font-size: 12px;
+    display: flex;
+    border-radius: 5px;
+    padding: 0 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.weekdayTraffic .sortBtn:hover{
+    color: #007bfe;
+}
