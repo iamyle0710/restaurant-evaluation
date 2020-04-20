@@ -24,8 +24,8 @@ class App extends Component {
         if(!selectedRestaurant){
             return (
                 <Container fluid className="d-flex h-100 flex-column">
-                    <Row>
-                        <Col>
+                    <Row style={{position: "relative", zIndex: 1}}>
+                        <Col className="mr-0 ml-0 pl-0 pr-0">
                             <HeaderRow></HeaderRow>
                         </Col>  
                     </Row>
@@ -43,8 +43,8 @@ class App extends Component {
     
         return (
             <Container fluid className="d-flex flex-column" style={{position: "relative", height: "100%"}}>
-                <Row style={{position: "relative"}}>
-                    <Col>
+                <Row style={{position: "relative", zIndex: 1}}>
+                    <Col className="mr-0 ml-0 pl-0 pr-0">
                         <HeaderRow></HeaderRow>
                     </Col>  
                 </Row>

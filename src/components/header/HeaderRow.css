@@ -8,6 +8,12 @@
 }
 
 .header {
-    border-bottom: 1px solid #aaa;
+    padding: 0 20px;
     align-items: center;
+    box-shadow: 0 0 4px;
+}
+
+.headerMenu{
+    border-bottom: 1px solid;
+    color: #707070;
 }
