@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #fff;
+    /* border: 2px solid #fff; */
     opacity: 0.9;
     width: 20px;
     height: 20px;
@@ -11,37 +11,73 @@
     top : -20px;
     border-radius: 100%;
 }
-.restaurantDot.bad{
+.restaurantDot.bad,
+.restaurantDot.bad:hover .hoverInfo,
+.restaurantDot.bad.selected .hoverInfo{
     background-color: #ff2f2f;
     color: #fff;
 }
 
-.restaurantDot.median{
-    background-color: #ff9393;
-    color: #414141;
+.restaurantDot.bad .arrowDown{
+    border-top : 15px solid #ff2f2f;
 }
 
-.restaurantDot.good{
+.restaurantDot.bad .performance{
+    background: #d12020;
+}
+
+.restaurantDot.median, 
+.restaurantDot.median:hover .hoverInfo,
+.restaurantDot.median.selected .hoverInfo{
+    background-color: #a2a2a2;
+    color: #fff;
+}
+
+.restaurantDot.median .arrowDown{
+    border-top : 15px solid #a2a2a2;
+}
+
+.restaurantDot.median .performance{
+    background: #858585;
+}
+
+.restaurantDot.good,
+.restaurantDot.good:hover .hoverInfo,
+.restaurantDot.good.selected .hoverInfo{
     background-color: #d7f243;
     color: #414141;
 }
+.restaurantDot.good .arrowDown{
+    border-top : 15px solid #d7f243;
+}
+
+.restaurantDot.good .hoverInfo .performance{
+    background: #c2d942;
+}
+
 .restaurantDot:hover,
 .restaurantDot.selected {
-    border: 2px solid #7c7cfa;
-    /* background: #004b9c; */
-    color: #fff;
     z-index: 1000;
+    border: 2px solid #fff;
+}
+
+.restaurantDot:hover{
+    z-index: 1001;
+}
+
+.hoverInfoRow{
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 45px;
 }
 
 .hoverInfo {
     position: absolute;
-    background: #007bfe;
-    color: #fff;
-    min-width: 150px;
-    padding: 10px;
+    min-width: 180px;
     text-align: center;
-    top: -50px;
-    border-radius: 5px;
+    top: -60px;
+    /* border-radius: 5px; */
     box-shadow: 0 0 8px 1px #3b3b3b;
     transition: opacity 0.5s;
     display: none;
@@ -49,14 +85,14 @@
 
 .hoverInfo .restaurantName{
     flex: 1;
+    font-size: 14px;
 }
 
 .hoverInfo .performance{
-    background: #fff;
-    color: #0e78ed;
-    padding: 3px 5px;
-    margin-left: 10px;
-    border-radius: 3px;
+    display: flex;
+    height: 100%;
+    padding: 10px;
+    align-items: center;
 }
 
 .arrowDown{
@@ -68,7 +104,7 @@
     height : 0;
     border-left : 10px solid transparent;
     border-right : 10px solid transparent;
-    border-top : 15px solid #007bfe;
+    /* border-top : 15px solid #007bfe; */
 }
 
 .restaurantDot:hover .hoverInfo,

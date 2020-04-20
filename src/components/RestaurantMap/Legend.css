@@ -1,0 +1,32 @@
+.legendContainer{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px #565656;
+    opacity: 0.9;
+    color: #646464;
+    font-size: 14px;
+}
+
+.legendTitle{
+    margin: 5px 10px;
+    font-weight: bold;
+}
+
+.legendRow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.legendCircle{
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin: 5px;
+}

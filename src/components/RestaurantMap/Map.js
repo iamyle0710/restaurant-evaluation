@@ -36,7 +36,8 @@ class Map extends Component {
         yesIWantToUseGoogleMapApiInternals={true}
         onGoogleApiLoaded={({map, maps}) => {
           map.setOptions({
-            clickableIcons : false
+            clickableIcons : false,
+            disableDefaultUI : true
           })
           console.log("loaded ", map, maps)
         }}

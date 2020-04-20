@@ -23,7 +23,7 @@ class RestaurantDot extends Component {
         return (
             <div className={["restaurantDot", performanceStyle, selected].join(" ")} onClick={() => this.props.selectRestaurant(restaurant)}>
                 <div className="hoverInfo">
-                    <div className="d-flex flex-row" style={{alignItems: "center"}}>
+                    <div className="d-flex flex-row hoverInfoRow">
                         <span className="restaurantName">{restaurant.name}</span>
                         <span className="performance">{restaurant.performance}</span>
                     </div>
