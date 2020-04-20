@@ -17,8 +17,8 @@ const WordCloud = ({words}) => {
         <div style={{ height: '150px', width: '100%' }}>
             <ReactWordcloud options={{
                 deterministic: true,
-                rotations: 3,
-                rotationAngles: [0, 90],
+                // rotations: 3,
+                // rotationAngles: [0, 90],
                 fontSizes: [16, 40],
             }} words={words}></ReactWordcloud>
         </div>
