@@ -16,7 +16,6 @@ class WeekdayTraffic extends React.Component{
     }
     
     componentDidUpdate(prevProps){
-        console.log("update");
         if(prevProps.data !== this.props.data){
             this.changeSortMethod();
         }

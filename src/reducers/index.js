@@ -37,9 +37,19 @@ const suggestionsReducer = (restaurants = [], action) => {
     }
 }
 
+const mapCenterReducer = (center = {lat : -22.811961, lng : -43.2506787}, action) => {
+    switch(action.type){
+        case "SET_MAP_CENTER":
+            return {...action.payload};
+        default:
+            return center;
+    }
+}
+
 export default combineReducers({
     restaurantRatings : restaurantsRatingsReducer,
     restaurantWords : restaurantWordsReducer,
     selectedRestaurant : selectedRestaurantReducer,
-    suggestions : suggestionsReducer
+    suggestions : suggestionsReducer,
+    mapCenter : mapCenterReducer
 });

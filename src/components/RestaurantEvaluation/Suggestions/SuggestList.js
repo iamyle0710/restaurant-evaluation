@@ -147,6 +147,7 @@ class SuggestList extends React.Component{
     
     render (){
         const items = this.filterItems();
+        // console.log(items, this.props.suggestions);
 
         return (
             <div id="SuggestList" className="d-flex flex-column">

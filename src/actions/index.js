@@ -83,3 +83,13 @@ export const selectRestaurant = (restaurant) => {
         payload : restaurant
     }
 };
+
+export const setMapCenter = (lat= -22.811961, lng= -43.2506787) => {
+    return {
+        type : "SET_MAP_CENTER",
+        payload : {
+            lat : lat,
+            lng : lng
+        }
+    }
+}

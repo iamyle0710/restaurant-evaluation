@@ -7,7 +7,7 @@ class Legend extends Component {
     renderTypes(){
         const rst = this.props.types.map((type) => {
             return (
-                <div className="legendRow">
+                <div className="legendRow" key={type.name}>
                     <span className="legendCircle" style={{background: type.color}}></span>
                     <span>{type.name}</span>
                 </div>

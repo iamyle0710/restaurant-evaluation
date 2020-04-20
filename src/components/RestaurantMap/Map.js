@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
+import { connect } from 'react-redux';
 
 import RestaurantDot from "./RestaurantDot";
 
@@ -11,8 +12,50 @@ class Map extends Component {
         lng: -43.2506787,
         lat: -22.811961
       },
+      marker : null,
       zoom: 16
     };
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.center !== this.props.center){
+      const center = this.props.center;
+      this.map.setCenter({
+        lat : center.lat,
+        lng : center.lng
+      });
+
+      this.clearMarkers();
+
+      if(center.lat !== this.state.center.lat || center.lng !== this.state.center.lng){
+        this.addMarker();
+      }
+    }
+  }
+
+  clearMarkers(){
+    if(this.state.marker){
+      this.state.marker.setMap(null);
+      this.setState({
+        marker : null
+      })
+    }
+  }
+
+  addMarker(){
+    var marker = new this.maps.Marker({
+      position : {
+        lat : this.props.center.lat,
+        lng : this.props.center.lng
+      },
+      animation: this.maps.Animation.DROP,
+      map : this.map
+    });
+
+    this.setState({
+      marker : marker
+    })
+    
   }
 
   render() {
@@ -39,6 +82,8 @@ class Map extends Component {
             clickableIcons : false,
             disableDefaultUI : true
           })
+          this.map = map;
+          this.maps = maps;
           console.log("loaded ", map, maps)
         }}
       >
@@ -48,4 +93,9 @@ class Map extends Component {
   }
 }
 
-export default Map;
+const mapStateToProps = (state) => {
+  return {
+    center : state.mapCenter
+  }
+}
+export default connect(mapStateToProps)(Map);
