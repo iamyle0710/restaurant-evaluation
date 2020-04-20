@@ -38,3 +38,20 @@ svg{
     font-size: 16px;
     color: #898989;
 }
+
+#bar_tooltip{
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    font: 12px sans-serif;
+    color: #fff;
+    border: 0px;
+    border-radius: 3px;
+    pointer-events: none;
+    display: block;
+    border: 1px solid #bcbcbc;
+    min-width: 60px;
+    background: rgb(255, 255, 255);
+    color: #7777f4;
+    opacity: 0.9;
+}

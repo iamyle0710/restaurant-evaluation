@@ -15,6 +15,12 @@ class WeekdayTraffic extends React.Component{
         sortBy : 'BY_DAY',
     }
     
+    componentDidUpdate(prevProps){
+        console.log("update");
+        if(prevProps.data !== this.props.data){
+            this.changeSortMethod();
+        }
+    }
     changeSortMethod(){
         let sortBy = this.state.sortBy === "BY_DAY" ? "BY_VALUE" : "BY_DAY";        
         this.sortData(sortBy);

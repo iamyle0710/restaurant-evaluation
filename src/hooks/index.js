@@ -3,6 +3,7 @@ import {
   select,
   axisLeft,
   axisBottom,
+  event,
   format,
   scaleBand,
   scaleLinear,
@@ -114,11 +115,47 @@ export const useBarChartRender = (
         enter =>
           enter
             .append("rect")
+            .attr("opacity", 1)
             .attr("x", d => xScale(d.day))
             .attr("y", d => yScale(d.value))
             .attr("width", xScale.bandwidth)
             .attr("height", d => chartDimension.height - yScale(d.value))
-            .attr("fill", d => colorScale(d.value)),
+            .attr("fill", d => colorScale(d.value))
+            .on("mouseover", function(d){
+              // console.log(d);
+              let x = event.pageX + 15;
+              let y = event.pageY + 15;
+              
+              select(this)
+                .transition()
+                .attr("opacity", 0.85);
+
+              if(select("#bar_tooltip").empty()){
+                select("body")
+                  .append("div")
+                  .attr("id", "bar_tooltip")
+                  .style("position", "absolute")
+                  .style("left", (x+ "px"))
+                  .style("top", (y + "px"));
+              }
+
+              select("#bar_tooltip")
+                .html(d.day + "<br>" + d.value)
+                .style("display", "block")
+                .transition()
+                .style("left", (x + "px"))
+                .style("top", (y + "px"))
+                
+            })
+            .on("mouseout", function(d){
+
+              select(this)
+                .transition()
+                .attr("opacity", 1);
+
+              select("#bar_tooltip")
+                .style("display", "none");
+            }),
         update =>
           update
             .transition()
