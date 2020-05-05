@@ -26,7 +26,7 @@ export const getRestaurantsRating = () => {
             restaurant["lng"] = +restaurant["lng"];
             restaurant["daily_footprints"] = restaurant["daily_footprints"].map((value, index) => {
                 return { 
-                    day : indexToDay[index],
+                    name : indexToDay[index],
                     value : +value
                 }
             });

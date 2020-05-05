@@ -13,7 +13,7 @@ class SuggestList extends React.Component{
         let total = 0;
         let performanceLevels = ["All", "Bad", "Median", "Good"];
         let performanceIndex = performanceLevels.indexOf(props.performance);
-        let filterPerformance = performanceIndex === (performanceLevels.length - 1) ? "All" : performanceLevels[performanceIndex + 1];
+        let filterPerformance = "All";
         cuisineTypes["All"] = 0;
 
         props.suggestions.forEach(item => {

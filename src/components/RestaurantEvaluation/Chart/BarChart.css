@@ -10,13 +10,14 @@ svg{
 }
 
 .xChartAxis .tick text{
-  transform: rotate(-45deg);
-  text-anchor: end;
+  /* transform: rotate(-45deg); */
+  text-anchor: center;
 }
 
 .xLabel, .yLabel {
     fill: #9d9d9d;
     font-size: 10px;
+    text-anchor: middle;
 }
 
 .nodata{
@@ -27,6 +28,8 @@ svg{
     border-radius: 3px;
     color: #818181;
     font-size: 18px;
+    flex: 1;
+    margin: 5px;
 }
 
 .nodata .messageIcon{
@@ -54,4 +57,10 @@ svg{
     background: rgb(255, 255, 255);
     color: #7777f4;
     opacity: 0.9;
+}
+
+.chartTitle{
+    font-size: 14px;
+    color: #959595;
+    margin-top: 10px;
 }

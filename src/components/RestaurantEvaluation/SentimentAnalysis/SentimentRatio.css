@@ -1,0 +1,50 @@
+#sentimentRatio{
+    position: relative;
+    float: left;
+    height: 25px;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ratio{
+    position: relative;
+    float: left;
+    width: 0%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    color: #fff;
+    transition: width 0.3s;
+}
+
+.ratio.positive{
+    background: #F49417;
+    justify-content: flex-end;
+    padding-left: 10px;
+}
+
+.ratio.positive::before{
+    content: '\f118';
+    font-family: fontawesome;
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    color: #ffc16f;
+}
+
+.ratio.negative{
+    background: #cd5858;
+    justify-content: flex-start;
+    padding-right: 10px;
+}
+
+.ratio.negative::before{
+    content: '\f119';
+    font-family: fontawesome;
+    position: absolute;
+    right: 5px;
+    color: #ea8d8d;
+}

@@ -29,7 +29,7 @@ function Footprint({data}){
                     <div className="indicator" style={{height: percentage + "%"}}></div>
                     <span style={{color : "#434141", fontSize: aspect.size}}>{percentage} %</span>
                 </div>
-                {/* <div style={{fontSize:"10px", color : "##a6a6a6", paddingTop: "10px" }}>{data[0]} customers monthly </div> */}
+                <div style={{fontSize:"10px", color : "##a6a6a6", paddingTop: "10px", textAlign: "center" }}>{data[0]} customers monthly </div>
 
             </div>
         </React.Fragment>

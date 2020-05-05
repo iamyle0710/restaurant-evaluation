@@ -20,7 +20,7 @@ class App extends Component {
         let restaurantRatings = this.props.restaurantRatings || [];
         let selectedRestaurant = this.props.selectedRestaurant || null;
         let restaurantWords = this.props.restaurantWords || [];
-        let suggestions = (selectedRestaurant) ? this.props.suggestions.filter(restaurant => restaurant.performance !== selectedRestaurant.performance) : [];
+        let suggestions = this.props.suggestions || [];
         if(!selectedRestaurant){
             return (
                 <Container fluid className="d-flex h-100 flex-column">

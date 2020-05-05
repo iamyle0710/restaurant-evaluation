@@ -49,6 +49,141 @@ export const useWindowResize = ref => {
   return { width: dimension.width, height: dimension.height, setDimension };
 };
 
+export const useHBarChartRender = (
+  svgRef,
+  svgDimension,
+  margins,
+  xLabel,
+  yLabel,
+  unit = "",
+  color,
+  data
+) => {
+  useEffect(() => {
+    if (!data || !svgRef | !svgRef.current) {
+      return;
+    }
+
+    if (
+      svgDimension.width !== svgRef.current.width.baseVal.value ||
+      svgDimension.height !== svgRef.current.height.baseVal.value
+    ) {
+      svgDimension.setDimension({
+        width: svgRef.current.width.baseVal.value,
+        height: svgRef.current.height.baseVal.value
+      });
+    }
+    const chartDimension = {
+      width: svgDimension.width - margins.left - margins.right,
+      height: svgDimension.height - margins.top - margins.bottom
+    };
+    const maxValue = Math.max(...data.map(d => d.value));
+    const yScale = scaleBand()
+      .domain(data.map(d => d.name))
+      .range([0, chartDimension.height])
+      .padding(0.2);
+
+    const xScale = scaleLinear()
+      .domain([0, maxValue <= 10 ? 10 : maxValue])
+      .range([0, chartDimension.width]);
+
+    const xAxis = axisBottom(xScale).ticks(5).tickFormat(format("d"));
+    const yAxis = axisLeft(yScale);
+    const svg = select(svgRef.current);
+
+    svg
+      .select(".chart")
+      .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+
+    svg
+      .select(".chart")
+      .selectAll("rect")
+      .data(data)
+      .join(
+        enter =>
+          enter
+            .append("rect")
+            .attr("opacity", 1)
+            .attr("x", d => 0)
+            .attr("y", d => yScale(d.name))
+            .attr("height", yScale.bandwidth)
+            .attr("width", d => xScale(d.value))
+            .attr("fill", d => color)
+            .on("mouseover", function(d){
+              // console.log(d);
+              let x = event.pageX + 15;
+              let y = event.pageY + 15;
+              
+              select(this)
+                .transition()
+                .attr("opacity", 0.85);
+
+              if(select("#bar_tooltip").empty()){
+                select("body")
+                  .append("div")
+                  .attr("id", "bar_tooltip")
+                  .style("position", "absolute")
+                  .style("left", (x+ "px"))
+                  .style("top", (y + "px"));
+              }
+
+              select("#bar_tooltip")
+                .html(d.name + "<br>" + d.value.toFixed(2) + unit)
+                .style("display", "block")
+                .style("background", color)
+                .style("color", "#fff")
+                .transition()
+                .style("left", (x + "px"))
+                .style("top", (y + "px"))
+                
+            })
+            .on("mouseout", function(d){
+
+              select(this)
+                .transition()
+                .attr("opacity", 1);
+
+              select("#bar_tooltip")
+                .style("display", "none");
+            }),
+        update =>
+          update
+            .transition()
+            .attr("y", d => yScale(d.name))
+            .attr("height", yScale.bandwidth)
+            .attr("width", d => xScale(d.value)),
+        exit => exit.remove()
+      );
+
+    svg
+      .select(".chart .xChartAxis")
+      .transition()
+      .attr("transform", "translate(0," + chartDimension.height + ")")
+      .call(xAxis);
+
+    svg
+      .select(".chart .yChartAxis")
+      .transition()
+      .call(yAxis);
+
+    // Add Y Title
+    svg
+      .select(".chart .yLabel")
+      .attr("transform", "rotate(-90)")
+      .attr("text-anchor", "middle")
+      .attr("x", -chartDimension.height / 2)
+      .attr("y", -margins.left * 0.7 - 5)
+      .text(yLabel);
+
+    // Add X Title
+    svg
+      .select(".chart .xLabel")
+      .attr("x", chartDimension.width / 2)
+      .attr("y", chartDimension.height + 30)
+      .text(xLabel);
+  }, [data, svgDimension]);
+}
+
 /**
  * Custom Bar Chart Render Hook
  * triggers when data or element dimension changes
@@ -87,7 +222,7 @@ export const useBarChartRender = (
     };
     const maxValue = Math.max(...data.map(d => d.value));
     const xScale = scaleBand()
-      .domain(data.map(d => d.day))
+      .domain(data.map(d => d.name))
       .range([0, chartDimension.width])
       .padding(0.2);
 
@@ -116,7 +251,7 @@ export const useBarChartRender = (
           enter
             .append("rect")
             .attr("opacity", 1)
-            .attr("x", d => xScale(d.day))
+            .attr("x", d => xScale(d.name))
             .attr("y", d => yScale(d.value))
             .attr("width", xScale.bandwidth)
             .attr("height", d => chartDimension.height - yScale(d.value))
@@ -135,13 +270,16 @@ export const useBarChartRender = (
                   .append("div")
                   .attr("id", "bar_tooltip")
                   .style("position", "absolute")
+                  
                   .style("left", (x+ "px"))
                   .style("top", (y + "px"));
               }
 
               select("#bar_tooltip")
-                .html(d.day + "<br>" + d.value)
+                .html(d.name + "<br>" + d.value)
                 .style("display", "block")
+                .style("background-color", "#6161f4")
+                .style("color", "#fff")
                 .transition()
                 .style("left", (x + "px"))
                 .style("top", (y + "px"))
@@ -159,7 +297,7 @@ export const useBarChartRender = (
         update =>
           update
             .transition()
-            .attr("x", d => xScale(d.day))
+            .attr("x", d => xScale(d.name))
             .attr("y", d => yScale(d.value))
             .attr("width", xScale.bandwidth)
             .attr("height", d => chartDimension.height - yScale(d.value)),
