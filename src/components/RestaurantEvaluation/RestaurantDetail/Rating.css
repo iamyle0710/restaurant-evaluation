@@ -3,6 +3,7 @@
     align-items: center;
     margin: 0 10px;
     border-left: 1px solid #aaa;
+    color: var(--font-color);
     padding-left: 10px;
 }
 
@@ -18,7 +19,7 @@
 }
 
 .ratingStar.checked{
-    color : #d9d926;
+    color : var(--good-color);
 }
 
 .ratingQuantity{

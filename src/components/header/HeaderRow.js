@@ -10,12 +10,12 @@ const HeaderRow = () => {
             <Col className="flex-grow-1">
                 <span className="headerMenu">Restaurant Evaluation</span>
             </Col>
-            <Col sm="auto" className="pr-0">
+            {/* <Col sm="auto" className="pr-0">
                 <DropdownButton id="dropdown-basic-button" title="Stakeholders">
                     <Dropdown.Item href="#/action-1">Stakeholders</Dropdown.Item>
-                    {/* <Dropdown.Item href="#/action-2">Travelers</Dropdown.Item> */}
+                    <Dropdown.Item href="#/action-2">Travelers</Dropdown.Item>
                 </DropdownButton>
-            </Col>
+            </Col> */}
         </div>
     )
 }

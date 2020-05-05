@@ -3,10 +3,27 @@ svg{
     height : 100%;
 }
 
+svg rect.normal{
+    fill: var(--normal-color);
+}
+
+svg rect.positive{
+    fill: var(--good-color);
+}
+
+svg rect.negative{
+    fill: var(--bad-color);
+}
+
 .xChartAxis text,
 .yChartAxis text {
   font-size: 11px;
-  fill: black;
+  fill: var(--font-color);
+}
+
+svg line,
+svg path {
+  stroke: var(--font-color);
 }
 
 .xChartAxis .tick text{
@@ -57,6 +74,18 @@ svg{
     background: rgb(255, 255, 255);
     color: #7777f4;
     opacity: 0.9;
+}
+
+#bar_tooltip.normal{
+    background-color: var(--normal-color);
+}
+
+#bar_tooltip.positive{
+    background-color: var(--good-color);
+}
+
+#bar_tooltip.negative{
+    background-color: var(--bad-color);
 }
 
 .chartTitle{

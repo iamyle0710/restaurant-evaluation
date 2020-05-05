@@ -27,7 +27,7 @@ function Footprint({data}){
             <div ref={ref} className="percentageContainer">
                 <div className="percentage" style={{width : aspect.side, height: aspect.side}}>
                     <div className="indicator" style={{height: percentage + "%"}}></div>
-                    <span style={{color : "#434141", fontSize: aspect.size}}>{percentage} %</span>
+                    <span style={{fontSize: aspect.size}}>{percentage} %</span>
                 </div>
                 <div style={{fontSize:"10px", color : "##a6a6a6", paddingTop: "10px", textAlign: "center" }}>{data[0]} customers monthly </div>
 

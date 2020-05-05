@@ -21,7 +21,7 @@
 }
 
 .ratio.positive{
-    background: #F49417;
+    background: var(--good-color);
     justify-content: flex-end;
     padding-left: 10px;
 }
@@ -32,11 +32,11 @@
     position: absolute;
     left: 5px;
     top: 2px;
-    color: #ffc16f;
+    color: #ddd;
 }
 
 .ratio.negative{
-    background: #cd5858;
+    background: var(--bad-color);
     justify-content: flex-start;
     padding-right: 10px;
 }
@@ -46,5 +46,5 @@
     font-family: fontawesome;
     position: absolute;
     right: 5px;
-    color: #ea8d8d;
+    color: #ddd;
 }

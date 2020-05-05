@@ -5,13 +5,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: var(--font-color);
 }
 
 .percentage{
     width: 100px;
     height: 100px;
     border-radius: 100%;
-    border: 1px solid #cbc9f4;
+    border: 2px solid var(--normal-color);;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +25,7 @@
     bottom: 0;
     height: 0;
     width: 100%;
-    background: linear-gradient(to top,#e0e0f8, #d0d0fc);
+    background: var(--normal-color);;
     transition: height 0.5s;
-    z-index: -1;
+    z-index: 0;
 }

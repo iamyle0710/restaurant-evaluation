@@ -10,3 +10,11 @@ body{
     height : 100%;
     width: 100%;
 }
+
+:root{
+    --good-color : #28C86A;
+    --median-color : #83ecf0;
+    --bad-color : #FD3334;
+    --normal-color : #2AAFB9;
+    --font-color : #4C6972;
+}

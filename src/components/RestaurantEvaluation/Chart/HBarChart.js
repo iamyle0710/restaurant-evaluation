@@ -3,13 +3,13 @@ import React, { useRef } from 'react';
 import "./BarChart.css";
 import { useWindowResize, useHBarChartRender } from '../../../hooks';
 
-function HBarChart({data, xLabel, yLabel, title, unit, color}){
+function HBarChart({data, xLabel, yLabel, title, unit, colorClass}){
 
     const svgRef = useRef();
     const svgDimension = useWindowResize(svgRef); 
     const margins = {top: 20, right : 20, bottom : 30, left: 100};
 
-    useHBarChartRender(svgRef, svgDimension, margins, xLabel, yLabel, unit, color, data);
+    useHBarChartRender(svgRef, svgDimension, margins, xLabel, yLabel, unit, colorClass, data);
 
     if(!data || data.length === 0){
         return (

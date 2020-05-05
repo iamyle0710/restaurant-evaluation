@@ -2,7 +2,7 @@
     font-size: 36px;
     font-weight: bold;
     margin-right: 30px;
-    color: #007bfe;
+    color: #81CAEF;
     padding: 0;
     text-transform: uppercase;
 }
@@ -11,9 +11,9 @@
     padding: 0 20px;
     align-items: center;
     box-shadow: 0 0 4px;
+    background: #222A36;
 }
 
 .headerMenu{
-    border-bottom: 1px solid;
-    color: #707070;
+    color: #d1d1d1;
 }

@@ -1,5 +1,5 @@
 .cellName{
     text-transform: uppercase;
-    color: #494949;
+    color: var(--font-color);
     display: flex;
 }

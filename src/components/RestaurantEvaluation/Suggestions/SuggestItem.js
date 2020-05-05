@@ -20,7 +20,7 @@ class SuggestItem extends React.Component{
         const restaurant = this.props.restaurant;
         // console.log(restaurant);
         return (
-            <div className="SuggestionItem" onMouseEnter={() => this.onMouseEnterItem()} onMouseLeave={() => this.onMouseLeaveItem()}>
+            <div className="SuggestionItem" >
                 <img src={restaurant.img_url} alt={restaurant.name}></img>
                 <div className="hoverContent flex-column">
                     <div className="mask">
@@ -30,6 +30,9 @@ class SuggestItem extends React.Component{
                             <div className="d-flex flex-column">
                                 <div className="d-flex">Cuisine : {restaurant.cuisine}</div>
                                 <Rating socialRating={restaurant.ratings} numberOfRatings={restaurant.number_of_reviews}></Rating>
+                            </div>
+                            <div className="location">
+                                <i class="fa fa-map-marker" aria-hidden="true" onMouseEnter={() => this.onMouseEnterItem()} onMouseLeave={() => this.onMouseLeaveItem()}></i>
                             </div>
                         </div>
                     </div>

@@ -27,7 +27,7 @@ class RestaurantEvaluation extends Component {
         }
 
         return(
-            <Container fluid className="d-flex h-100 flex-column" style={{position: "relative", height: "100%", overflow: "auto"}}>
+            <Container fluid className="d-flex h-100 flex-column" style={{position: "relative", height: "100%", overflow: "auto", background : "#fcfcfc", boxShadow: "0 0 2px 3px #dfdfdf"}}>
                 <Row>
                     <Col sm={12} className={this.marginBottom.header}>
                         <Name name={restaurant.name}></Name>

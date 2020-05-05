@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Map from './Map';
 import Legend from './Legend';
+import { Row } from "react-bootstrap";
 
 class RestuarantMap extends Component {
   
@@ -12,14 +13,14 @@ class RestuarantMap extends Component {
     let restaurants = this.props.restaurantRatings || [];
 
     return (
-      <div style={{ height: "100%", width: "100%", position: "relative"}}>
+      <Row className="mr-0 ml-0 pl-0 pr-0" style={{ height: "100%", width: "100%", position: "relative"}}>
         <Map 
           restaurants={restaurants} 
           selectedRestaurant={this.props.selectedRestaurant || null}>
           
           </Map>
         <Legend title="Performance" types={this.legendTypes}></Legend>
-      </div>
+      </Row>
     );
   }
 }

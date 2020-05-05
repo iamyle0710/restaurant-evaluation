@@ -23,14 +23,14 @@ class App extends Component {
         let suggestions = this.props.suggestions || [];
         if(!selectedRestaurant){
             return (
-                <Container fluid className="d-flex h-100 flex-column">
+                <Container fluid className="d-flex h-100 flex-column mr-0 ml-0 pl-0 pr-0">
                     <Row style={{position: "relative", zIndex: 1}}>
-                        <Col className="mr-0 ml-0 pl-0 pr-0">
+                        <Col className="mr-0 ml-0 pl-2 pr-0">
                             <HeaderRow></HeaderRow>
                         </Col>  
                     </Row>
-                    <Row className="flex-grow-1">
-                        <Col sm={12} lg={12}>
+                    <Row className="flex-grow-1 mr-0 ml-0 pl-0 pr-0">
+                        <Col sm={12} lg={12} className="mr-0 ml-0 pl-0 pr-0">
                             <RestuarantMap 
                                 restaurantRatings={restaurantRatings}
                                 selectedRestaurant={selectedRestaurant}
@@ -42,20 +42,20 @@ class App extends Component {
         }
     
         return (
-            <Container fluid className="d-flex flex-column" style={{position: "relative", height: "100%"}}>
+            <Container fluid className="d-flex flex-column mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
                 <Row style={{position: "relative", zIndex: 1}}>
-                    <Col className="mr-0 ml-0 pl-0 pr-0">
+                    <Col className="mr-0 ml-0 pl-2 pr-0">
                         <HeaderRow></HeaderRow>
                     </Col>  
                 </Row>
-                <Row style={{position: "relative", height: "100%", overflow:"hidden"}}>
-                    <Col sm={6} lg={8} style={{position: "relative", height: "100%"}}>
+                <Row className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%", overflow:"hidden"}}>
+                    <Col sm={6} lg={8} className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
                         <RestuarantMap 
                             restaurantRatings={restaurantRatings}
                             selectedRestaurant={selectedRestaurant}
                         ></RestuarantMap>
                     </Col>
-                    <Col sm={6} lg={4} className="ml-0 pl-0" style={{position: "relative", height: "100%"}}>
+                    <Col sm={6} lg={4} className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
                         <RestaurantEvaluation 
                             selectedRestaurant={selectedRestaurant} 
                             words={selectedRestaurant ? restaurantWords[selectedRestaurant.name] : []}

@@ -56,7 +56,7 @@ export const useHBarChartRender = (
   xLabel,
   yLabel,
   unit = "",
-  color,
+  colorClass,
   data
 ) => {
   useEffect(() => {
@@ -103,12 +103,12 @@ export const useHBarChartRender = (
         enter =>
           enter
             .append("rect")
+            .attr("class", colorClass)
             .attr("opacity", 1)
             .attr("x", d => 0)
             .attr("y", d => yScale(d.name))
             .attr("height", yScale.bandwidth)
             .attr("width", d => xScale(d.value))
-            .attr("fill", d => color)
             .on("mouseover", function(d){
               // console.log(d);
               let x = event.pageX + 15;
@@ -128,9 +128,9 @@ export const useHBarChartRender = (
               }
 
               select("#bar_tooltip")
+                .attr("class", colorClass)
                 .html(d.name + "<br>" + d.value.toFixed(2) + unit)
                 .style("display", "block")
-                .style("background", color)
                 .style("color", "#fff")
                 .transition()
                 .style("left", (x + "px"))
@@ -230,9 +230,9 @@ export const useBarChartRender = (
       .domain([0, maxValue <= 10 ? 10 : maxValue])
       .range([chartDimension.height, 0]);
 
-    const colorScale = scaleLinear()
-      .domain([0, Math.max(...data.map(d => d.value))])
-      .range(["#a7a7f4", "#6161f4"]);
+    // const colorScale = scaleLinear()
+    //   .domain([0, Math.max(...data.map(d => d.value))])
+    //   .range(["#a7a7f4", "#6161f4"]);
 
     const xAxis = axisBottom(xScale);
     const yAxis = axisLeft(yScale).ticks(5).tickFormat(format("d"));
@@ -250,12 +250,13 @@ export const useBarChartRender = (
         enter =>
           enter
             .append("rect")
+            .attr("class", "normal")
             .attr("opacity", 1)
             .attr("x", d => xScale(d.name))
             .attr("y", d => yScale(d.value))
             .attr("width", xScale.bandwidth)
             .attr("height", d => chartDimension.height - yScale(d.value))
-            .attr("fill", d => colorScale(d.value))
+            // .attr("fill", d => colorScale(d.value))
             .on("mouseover", function(d){
               // console.log(d);
               let x = event.pageX + 15;
@@ -277,8 +278,8 @@ export const useBarChartRender = (
 
               select("#bar_tooltip")
                 .html(d.name + "<br>" + d.value)
+                .attr("class", "normal")
                 .style("display", "block")
-                .style("background-color", "#6161f4")
                 .style("color", "#fff")
                 .transition()
                 .style("left", (x + "px"))
