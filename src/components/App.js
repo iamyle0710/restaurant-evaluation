@@ -48,14 +48,14 @@ class App extends Component {
                         <HeaderRow></HeaderRow>
                     </Col>  
                 </Row>
-                <Row className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%", overflow:"hidden"}}>
-                    <Col sm={6} lg={8} className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
+                <Row className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
+                    <Col sm={12} lg={8} className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
                         <RestuarantMap 
                             restaurantRatings={restaurantRatings}
                             selectedRestaurant={selectedRestaurant}
                         ></RestuarantMap>
                     </Col>
-                    <Col sm={6} lg={4} className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
+                    <Col sm={12} lg={4} className="mr-0 ml-0 pl-0 pr-0" style={{position: "relative", height: "100%"}}>
                         <RestaurantEvaluation 
                             selectedRestaurant={selectedRestaurant} 
                             words={selectedRestaurant ? restaurantWords[selectedRestaurant.name] : []}

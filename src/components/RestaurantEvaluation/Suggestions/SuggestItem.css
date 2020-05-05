@@ -62,8 +62,10 @@
     background: var(--good-color);
     border-radius: 2px;
     padding: 10px;
-    margin: 15px;
+    margin: 0 15px;
     display: flex;
+    height: 50px;
+    width: 50px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -93,4 +95,8 @@
 .SuggestionItem .ratingQuantity,
 .SuggestionItem .rating{
     color: #a4a4a4;
+}
+
+.SuggestionItem .ratingStar{
+    font-size: 20px;
 }
