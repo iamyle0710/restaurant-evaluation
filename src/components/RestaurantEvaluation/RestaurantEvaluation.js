@@ -58,7 +58,14 @@ class RestaurantEvaluation extends Component {
                 </Row>
                 <Row className="d-flex flex-column mt-3" style={{borderBottom: "1px solid #ddd"}}>
                     <Col sm={12} className="d-flex flex-column pb-3">
-                        <SentimentAnalysis positiveWords={restaurant.positive_words} positiveCounts={restaurant.positive_counts} negativeWords={restaurant.negative_words} negativeCounts={restaurant.negative_counts}></SentimentAnalysis>
+                        <SentimentAnalysis 
+                            positiveWords={restaurant.positive_words} 
+                            positiveCounts={restaurant.positive_counts} 
+                            positiveReviews={restaurant.positive_reviews} 
+                            negativeWords={restaurant.negative_words}
+                            negativeCounts={restaurant.negative_counts}
+                            negativeReviews={restaurant.negative_reviews}
+                        ></SentimentAnalysis>
                     </Col>
                 </Row>
                 <Row className="d-flex flex-column mt-3" style={{borderBottom: "1px solid #ddd", minHeight:"200px"}}>

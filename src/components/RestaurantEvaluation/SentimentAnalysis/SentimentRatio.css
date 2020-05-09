@@ -5,7 +5,73 @@
     border-radius: 5px;
     margin-top: 10px;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
+}
+
+.positive.ratio::before,
+.positive.ratio::after,
+.negative.ratio::before,
+.negative.ratio::after{
+    --scale : 0;
+    --arrow-size : 10px;
+    --translate-y : 0;
+
+    position: absolute;
+    top : -10px;
+    left : 50%;
+    transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+    transition: transform 150ms;
+    opacity: 0.9;
+}
+
+.positive.ratio:hover::before,
+.positive.ratio:hover::after,
+.negative.ratio:hover::before,
+.negative.ratio:hover::after{
+    --scale : 1;
+}
+
+.positive.ratio::before,
+.negative.ratio::before{
+    --translate-y : calc(-100% - var(--arrow-size));
+    
+    padding: 10px;
+    font-size: 12px;
+    content : attr(data-tooltip);
+    transform-origin: bottom center;
+    width: max-content;
+    max-width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 0 11px 1px #a2a2a2;
+    white-space: pre;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.positive.ratio::after,
+.negative.ratio::after{
+    --translate-y : calc(-1 * var(--arrow-size));
+    transform-origin: top center;
+    content : '';
+    border: var(--arrow-size) solid transparent;
+    border-top-color: var(--good-color);
+}
+
+.positive.ratio::before{
+    background-color: var(--good-color);
+}
+
+.positive.ratio::after{
+    border-top-color : var(--good-color);
+}
+
+.negative.ratio::before{
+    background-color: var(--bad-color);
+}
+
+.negative.ratio::after{
+    border-top-color: var(--bad-color);
 }
 
 .ratio{
@@ -26,14 +92,15 @@
     padding-left: 10px;
 }
 
-.ratio.positive::before{
+/* .ratio.positive::before, */
+/* .icon.positive{
     content: '\f118';
     font-family: fontawesome;
     position: absolute;
     left: 5px;
     top: 2px;
     color: #ddd;
-}
+} */
 
 .ratio.negative{
     background: var(--bad-color);
@@ -41,10 +108,18 @@
     padding-right: 10px;
 }
 
-.ratio.negative::before{
-    content: '\f119';
-    font-family: fontawesome;
+.negative.icon{
     position: absolute;
+    top: 5px;
     right: 5px;
+    z-index: 1;
+    color: #ddd;
+}
+
+.positive.icon{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
     color: #ddd;
 }
